@@ -48,22 +48,22 @@ jobs:
       - name: Test
         run: npm test
 
-  deploy-docker:
-    runs-on: self-hosted
-    name: Deploy docker
-    steps:
-      - name: Login to Github Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ secret.GHCR_USERNAME }}
-          password: ${{ secret.GHCR_PASSWORD }}
-      - name: Build image
-        uses: action/build-push-action@v2
-        with:
-          push: true
-          tags: latest
-          file: ./Dockerfile
+#   deploy-docker:
+#     runs-on: self-hosted
+#     name: Deploy docker
+#     steps:
+#       - name: Login to Github Registry
+#         uses: docker/login-action@v1
+#         with:
+#           registry: ghcr.io
+#           username: ${{ secret.GHCR_USERNAME }}
+#           password: ${{ secret.GHCR_PASSWORD }}
+#       - name: Build image
+#         uses: action/build-push-action@v2
+#         with:
+#           push: true
+#           tags: latest
+#           file: ./Dockerfile
 
   deploy_package:
     runs-on: self-hosted
