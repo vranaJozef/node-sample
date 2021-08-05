@@ -19,8 +19,8 @@ jobs:
           node-version: 12
       - name: Lint
         run: |
-          npm ci
           npm install
+          npm ci
           npm test
   build_and_test:
     runs-on: ubuntu-latest
