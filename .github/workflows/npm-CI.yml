@@ -8,20 +8,21 @@ on:
 
 jobs:
   lint:
-    runs_on: self-hosted
+    runs-on: self-hosted
     name: Lint
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Setup NodeJS
-          uses: actions/setup-node@v1
-          with:
-            node-version: 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Lint
         run: |
-        npm run ci
-        npm run lint
+          npm run ci
+          npm run lint
   build:
-    runs_on: self-hosted
+    runs-on: self-hosted
     name: Build
     steps:
       - name: Checkout source code
@@ -32,10 +33,10 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: |
-        npm ci
-        npm run build --if-present
+          npm ci
+          npm run build --if-present
   test:
-    runs_on: self-hosted
+    runs-on: self-hosted
     name: Test
     steps:
       - name: Checkout source code
@@ -47,8 +48,8 @@ jobs:
       - name: Test
         run: npm test
 
-  deploy_docker:
-    runs_on: self-hosted
+  deploy-docker:
+    runs-on: self-hosted
     name: Deploy docker
     steps:
       - name: Login to Github Registry
@@ -65,7 +66,7 @@ jobs:
           file: ./Dockerfile
 
   deploy_package:
-    runs_on: self-hosted
+    runs-on: self-hosted
     name: Deploy package
     steps:
       - name: Checkout source code
