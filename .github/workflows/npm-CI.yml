@@ -7,20 +7,21 @@ on:
     branches: [ main ]
 
 jobs:
-#   lint:
-#     runs-on: ubuntu-latest
-#     name: Lint
-#     steps:
-#       - name: Checkout source code
-#         uses: actions/checkout@v2
-#       - name: Setup NodeJS
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: 12
-#       - name: Lint
-#         run: |
-#           npm ci
-#           npm run lint
+  install_test:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - name: Lint
+        run: |
+          npm ci
+          npm install
+          npm test
   build_and_test:
     runs-on: ubuntu-latest
     name: Build
@@ -37,34 +38,24 @@ jobs:
           npm run build --if-present
           npm test 
 
-#   deploy-docker:
-#     runs-on: self-hosted
-#     name: Deploy docker
-#     steps:
+  build_push_docker:
+    runs-on: self-hosted
+    name: Deploy docker
+    steps:
 #       - name: Login to Github Registry
 #         uses: docker/login-action@v1
 #         with:
 #           registry: ghcr.io
 #           username: ${{ secret.GHCR_USERNAME }}
 #           password: ${{ secret.GHCR_PASSWORD }}
-#       - name: Build image
-#         uses: action/build-push-action@v2
-#         with:
-#           push: true
-#           tags: latest
-#           file: ./Dockerfile
-
-  deploy_package:
-    runs-on: ubuntu-latest
-    name: Deploy package
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-      - name: Setup NodeJS
-        uses: actions/setup-node@v1
+      - name: Build image
+        uses: action/build-push-action@v2
         with:
-          node-version: 12
-      - run: |
-          npm publish
+          push: true
+          tags: latest
+          file: ./Dockerfile
+#       - name: Push
+#         run: |
+#           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
