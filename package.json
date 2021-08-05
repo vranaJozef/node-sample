@@ -12,4 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC"
+  "devDependencies": {
+    "mocha": "^9.0.3"
+  }
 }
