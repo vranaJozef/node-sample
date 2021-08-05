@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 
-# jobs:
+jobs:
 #   lint:
 #     runs-on: ubuntu-latest
 #     name: Lint
