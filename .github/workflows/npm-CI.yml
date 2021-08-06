@@ -47,6 +47,6 @@ jobs:
       - name: Docker login
         run: docker login docker.pkg.github.com --username ${{ github.repository_owner }} --password ${{ secrets.GITHUB_TOKEN }}
       - name: Build image
-        run: docker build -t docker.pkg.github.com/vranajozef/node-sample/sampleimage:latest .
+        run: docker build -t docker.pkg.github.com/vranajozef/node-sample/nodesampleimage:latest .
       - name: Push image
-        run: docker push docker.pkg.github.com/vranajozef/node-sample/sampleimage:latest
+        run: docker push docker.pkg.github.com/vranajozef/node-sample/nodesampleimage:latest
