@@ -15,7 +15,7 @@ jobs:
       - name: Setup
         uses: warchant/setup-sonar-scanner@v3      
       - name: Xray
-        uses: mikepenz/xray-action@master
+        uses: mikepenz/xray-action@v1.1.2
     env:    
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
