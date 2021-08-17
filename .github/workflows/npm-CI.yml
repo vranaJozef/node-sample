@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Sonar
     steps:
-      - name: Setup
-        uses: warchant/setup-sonar-scanner@v3      
-      - name: Xray
-        uses: mikepenz/xray-action@v1.1.2    
+#       - name: Setup
+#         uses: warchant/setup-sonar-scanner@v3      
+#       - name: Xray
+#         uses: mikepenz/xray-action@v1.1.2    
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
